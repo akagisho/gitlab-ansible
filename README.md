@@ -24,7 +24,7 @@ Create configuration file.
 
     $ ${EDITOR} production/group_vars/all
     ---
-    gitlab_external_url: http://gitlab.example.com
+    gitlab_external_url: https://gitlab.example.com
     gitlab_ssh_host: gitlab.example.com
     gitlab_email_from: gitlab@example.com
 
@@ -34,7 +34,7 @@ Run ansible playbook.
 
 Login.
 
-* http://gitlab.example.com/<br>(root / 5iveL!fe)
+* https://gitlab.example.com/<br>(root / 5iveL!fe)
 
 ### local vagrant
 
@@ -45,4 +45,4 @@ Run ansible playbook.
 
 Login.
 
-* [http://10.200.19.34/](http://10.200.19.34/)<br>(root / 5iveL!fe)
+* [https://10.200.19.34/](https://10.200.19.34/)<br>(root / 5iveL!fe)

@@ -1,4 +1,4 @@
 ---
-gitlab_external_url: http://gitlab.example.com
+gitlab_external_url: https://gitlab.example.com
 gitlab_ssh_host: gitlab.example.com
 gitlab_email_from: gitlab@example.com

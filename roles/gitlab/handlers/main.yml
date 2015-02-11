@@ -1,3 +1,6 @@
 ---
 - name: reconfigure gitlab
   shell: gitlab-ctl reconfigure
+
+- name: restart nginx
+  shell: gitlab-ctl restart nginx

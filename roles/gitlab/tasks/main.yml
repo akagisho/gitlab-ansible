@@ -26,3 +26,31 @@
     dest=/etc/gitlab/gitlab.rb
     mode=0600
   notify: reconfigure gitlab
+
+- name: create directory for ssl files
+  file:
+    path=/etc/gitlab/ssl
+    state=directory
+    mode=0700
+  when: '"https:" in gitlab_external_url'
+
+- name: put ssl files
+  copy:
+    src={{ item }}
+    dest=/etc/gitlab/ssl
+    mode=0600
+  with_fileglob:
+    - etc/gitlab/ssl/*.pem.develop
+  when: '"https:" in gitlab_external_url'
+
+- name: copy ssl files
+  shell:
+    for src in `ls -1 *.develop`; do
+      dest=`echo $src | sed -e 's/\.develop$//'`;
+      test -f $dest || cp -pv $src $dest;
+    done
+    chdir=/etc/gitlab/ssl
+  when: '"https:" in gitlab_external_url'
+  register: result
+  changed_when: result.stdout != ""
+  notify: restart nginx
