@@ -1,0 +1,2 @@
+[default]
+zabbix.example.com  ansible_ssh_user=admin

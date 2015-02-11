@@ -1,0 +1,28 @@
+---
+- name: install depences
+  yum: name={{ item }}
+  with_items:
+    - postfix
+    - cronie
+
+- name: start postfix automatically
+  service: >
+    name=postfix
+    state=running
+    enabled=yes
+
+- name: get rpm
+  get_url:
+    url={{ gitlab_rpm_dir }}/{{ gitlab_rpm_file }}
+    dest=/usr/local/src/{{ gitlab_rpm_file }}
+
+- name: install GitLab
+  yum: name=/usr/local/src/{{ gitlab_rpm_file }}
+  notify: reconfigure gitlab
+
+- name: put gitlab config
+  template:
+    src=etc/gitlab/gitlab.rb.j2
+    dest=/etc/gitlab/gitlab.rb
+    mode=0600
+  notify: reconfigure gitlab

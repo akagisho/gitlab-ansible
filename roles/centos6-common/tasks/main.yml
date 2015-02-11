@@ -1,0 +1,17 @@
+---
+- name: install packages
+  yum: name={{ item }}
+  with_items:
+    - mlocate
+    - libselinux-python
+
+- name: disable SELinux (Sorry, Ishikawa-san)
+  shell: getenforce | grep -q Disabled || (setenforce 0 && echo changed)
+  register: result
+  changed_when: '"changed" in result.stdout'
+
+- name: disable SELinux
+  lineinfile: >
+    dest=/etc/selinux/config
+    regexp=^SELINUX=
+    line=SELINUX=disabled

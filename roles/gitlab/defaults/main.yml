@@ -1,0 +1,8 @@
+---
+gitlab_rpm_dir: http://downloads-packages.s3.amazonaws.com/centos-6.6
+gitlab_rpm_file: gitlab-7.7.2_omnibus.5.4.2.ci-1.el6.x86_64.rpm
+
+gitlab_external_url: http://gitlab.example.com
+gitlab_ssh_host: gitlab.example.com
+gitlab_email_from: gitlab@example.com
+gitlab_time_zone: Tokyo

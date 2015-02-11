@@ -1,0 +1,6 @@
+---
+- hosts: default
+  sudo: yes
+  roles:
+    - centos6-common
+    - gitlab
